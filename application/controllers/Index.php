@@ -18,34 +18,24 @@ class IndexController extends Yaf_Controller_Abstract {
 	public function IndexAction() {
 		$params['user']  = Yaf_Registry::get(SSN_VAR);
 		$Index = new IndexModel(Yaf_Registry :: get("db"), Yaf_Registry :: get('mc'));
+        //推荐商品
+        $recommendGoods = $Index ->getgoods(0);
+        foreach($recommendGoods as $key =>$good){
+            if(strlen($good['goodsname'])>48){
+                $goods[$key]['goodsname'] = substr($good['goodsname'],0,41)."...";
+
+            }
+        }
+        $params['recommendGoods'] = $recommendGoods;
 		//热销商品
-		$goods = $Index ->getgoods(0);
-		foreach($goods as $key =>$good){
+		$hotGoods = $Index ->getgoods(2);
+		foreach($hotGoods as $key =>$good){
 			if(strlen($good['goodsname'])>48){
 				$goods[$key]['goodsname'] = substr($good['goodsname'],0,41)."...";
 
 			}
 		}
-		$params['Goods'] = array();//$goods
-		//个人护理
-		$personalgoods = $Index ->getgoods(2);
-		foreach($personalgoods as $key =>$good){
-			if(strlen($good['goodsname'])>48){
-				$goods[$key]['goodsname'] = substr($good['goodsname'],0,41)."...";
-
-			}
-		}
-		$params['Personalgoods'] = $personalgoods;
-		//家居护理
-		$homeCaregoods = $Index ->getgoods(3);
-		foreach($homeCaregoods as $key =>$good){
-			if(strlen($good['goodsname'])>48){
-				$goods[$key]['goodsname'] = substr($good['goodsname'],0,41)."...";
-
-			}
-		}
-		$params['HomeCaregoods'] = array();//$homeCaregoods;
-//		echo "<pre>";var_dump($params['HomeCaregoods']);exit;
+		$params['hotGoods'] = $hotGoods;
 		$this->getView()->make('index.index',$params);
 	}
 

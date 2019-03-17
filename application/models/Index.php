@@ -32,8 +32,7 @@ class IndexModel{
                 FROM `concap_goods` cg
                 LEFT JOIN concap_company cc ON cc.sysno = cg.company_sysno
                 LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
-                WHERE cg.`isdel` = 0 AND cg.status = 1 AND cga.use = 0 ";
-//echo $sql;exit;
+                WHERE cg.`isdel` = 0 AND cg.status = 1 AND cga.use = 0 AND cg.classify_sysno = $type";
         return $this->dbh->select($sql);
     }
 
