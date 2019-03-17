@@ -1,0 +1,117 @@
+
+/*消息*/
+.header-news {
+	position: relative;
+	z-index: 5;
+	> a {
+		color: #e13705;
+	}
+
+	.header-news-box {
+		display: none;
+		width: 380px;
+		border: 1px solid #ddd;
+		position: absolute;
+		margin-left: -190px;
+		left: 20px;
+		top: 37px;
+		background: #fff;
+		min-height: 200px;
+		border-radius: 5px;
+		box-shadow: -5px 5px 10px rgba(0,0,0,.15);
+		padding: 10px 0;
+
+		&:before {
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 11px solid transparent;
+			border-right: 11px solid transparent;
+			border-bottom: 15px solid #ddd;
+			position:absolute;
+			top: -15px;
+			left: 50%;
+			margin-left: -11px;
+		}
+		&:after {
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 14px solid #fff;
+			position:absolute;
+			top: -14px;
+			left: 50%;
+			margin-left: -10px;
+			margin-top: 1px;
+		}
+	}
+	.header-news-title {
+		margin: 0 40px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 16px;
+		color: #333;
+		border-bottom: 1px solid #ddd;
+		span {
+			color: #e13705;
+		}
+	}
+	.header-news-foot {
+		margin: 0 40px;
+		border-top: 1px solid #ddd;
+		text-align: right;
+		a {
+			color: #e13705;
+		}
+	}
+	.header-news-xx {
+		overflow-y: auto;
+		margin-left: 40px;
+		padding-right: 40px;
+		max-height: 500px;
+		h5 {
+			margin: 50px 0;
+			padding-top: 50px;
+			background: url(news-icon.jpg) no-repeat center 0; 
+			text-align: center;
+			font-size: 18px;
+		}
+		dl {
+			border-top: 1px solid #ddd;
+			color: #999;
+			padding: 15px;
+			height: 170px;
+			&:first-child{
+				border-top: none;
+			}
+			dt {
+				line-height: 24px;
+				position: relative;
+				&:before {
+					content: "";
+					position: absolute;
+					left: -13px;
+					top: 7px;
+					width: 8px;
+					height: 8px;
+					border-radius: 100%;
+					background: #e13705;
+				}
+				p {
+					font-weight: bold;
+					color: #333;
+				}
+			}
+			dd {
+				margin-top: 10px;
+				line-height: 20px;
+				p {
+					color: #666;
+				}
+			}
+		}
+	}
+}
+/*消息 end*/

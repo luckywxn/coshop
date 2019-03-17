@@ -1,0 +1,18 @@
+a {
+    color: #666;
+    text-decoration: none;
+    transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+}
+
+a:hover {
+    color: #e03710;
+    color: #e03710;
+    text-decoration: none;
+}
+
+
+
+

@@ -1,0 +1,60 @@
+.jiesuandiv{
+    width: 1100px;
+    height:50px;
+    background-color: #eee;
+    display: block;
+}
+
+.jiesuandiv .select-all {
+    float: left;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 5px;
+}
+
+.jiesuandiv .float-bar-right {
+    float: right;
+    position: relative;
+    right: 0px;
+    top:0px;
+    width: 500px;
+    height: 50px;
+    z-index: 4;
+    padding-left: 20px;
+}
+
+.jiesuandiv .float-bar-right .amount-sum{
+    display: inline-block;
+    line-height: 48px;
+    cursor: pointer;
+}
+
+
+.jiesuandiv .float-bar-right .price-sum{
+    padding-left: 50px;
+    display: inline-block;
+    line-height: 48px;
+    color: #3c3c3c;
+}
+
+.jiesuandiv .float-bar-right .price-sum .price{
+    display: inline-block;
+    color: #f40;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 50px;
+    font-family: Arial;
+    vertical-align: middle;
+}
+
+.jiesuan{
+    width: 100px;
+    height:50px;
+    color: white;
+    background-color: #ccc;
+    border: none;
+    display: inline-block;
+    font-size: 18px;
+    float: right;
+}

@@ -1,0 +1,437 @@
+body {
+    font-size: 12px;
+    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif, sans-serif;
+    color: #666;
+    margin: 0 auto;
+    line-height: 1.82857143;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+*,*:after,*:before{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clearfix {
+    *zoom: 1;
+}
+
+.clear {
+    clear: both;
+    height: 15px;
+}
+
+
+.w100r {
+    width: 100% !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.header-top {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #999;
+    background: #eee;
+    overflow: hidden;
+}
+
+.header-top .header-top-left {
+    float: left;
+}
+
+.header-top .header-top-right {
+    float: right;
+}
+
+.header-top .header-top-right > span {
+    margin-left: 30px;
+}
+
+.header-top .header-top-right a {
+    text-decoration: none;
+}
+
+.header-top .header-top-right a.cstyle {
+    color: #bd0202;
+}
+
+.header-bg {
+    background: #fff;
+    height: 116px;
+}
+
+.header-bg .logo {
+    float: left;
+    height: 116px;
+    line-height: 116px;
+    font-size: 0;
+}
+
+.header-bg .logo img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header-bg .header-box {
+    width: 900px;
+    margin-top: 20px;
+    float: right;
+}
+
+.header-bg .header-box .header-search {
+    margin-right: 40px;
+    float: right;
+}
+
+.header-bg .header-box .header-search dl dt {
+    width: 280px;
+    height: 38px;
+    float: left;
+    border: 1px solid #e03710;
+    border-radius: 20px 0 0 20px;
+    border-right: 0;
+    padding-left: 15px;
+}
+
+.header-bg .header-box .header-search dl dt span {
+    float: left;
+    line-height: 36px;
+}
+
+.header-bg .header-box .header-search dl dt span i {
+    font-size: 12px;
+}
+
+.header-bg .header-box .header-search dl dt .form-control {
+    width: 80%;
+    border: none;
+    height: 36px;
+}
+
+.header-bg .header-box .header-search dl dt .form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.header-bg .header-box .header-search dl dt:hover {
+    border-color: #e03710;
+}
+
+.header-bg .header-box .header-search dl dd {
+    float: left;
+}
+
+.header-bg .header-box .header-search dl dd button {
+    width: 50px;
+    height: 38px;
+    background-color: #e03710;
+    color: #fff;
+    text-align: center;
+    border-radius: 0 20px 20px 0;
+    border: none;
+}
+
+.header-bg .header-box .header-volume {
+    float: right;
+}
+
+.header-bg .header-box .header-volume dl dt {
+    color: #999;
+    float: left;
+}
+
+.header-bg .header-box .header-volume dl dd {
+    width: 55px;
+    float: left;
+    text-align: right;
+    color: #e03710;
+}
+
+/*行业指数*/
+.industry {
+    height: 80px;
+    background-color: #fff;
+}
+.industry h5 {
+    width: 100px;
+    text-align: center;
+    line-height: 80px;
+    float: left;
+}
+.industry h5 img {
+    display: inline-block;
+    vertical-align: middle;
+}
+.industry .industry-box {
+    width: 1100px;
+    height: 80px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+.industry .industry-box ul {
+    position: absolute;
+    float: left;
+}
+.industry .industry-box ul li {
+    width: 120px;
+    float: left;
+}
+.industry .industry-box ul li.icon-green dl dt {
+    color: #5aa800;
+}
+.industry .industry-box ul li.icon-green dl dt span {
+    background: url(../img/icon_02.png) no-repeat right center;
+}
+.industry .industry-box ul li.icon-red dl dt {
+    color: #ff2000;
+}
+.industry .industry-box ul li.icon-red dl dt span {
+    background: url(../img/icon_01.png) no-repeat right center;
+}
+.industry .industry-box ul li dl {
+    width: 116px;
+    margin-top: 23px;
+    line-height: 18px;
+    float: left;
+    padding-left: 26px;
+}
+.industry .industry-box ul li dl dt {
+    font-weight: bold;
+}
+.industry .industry-box ul li dl dt span {
+    padding-right: 15px;
+    display: inline-block;
+}
+.industry .industry-box ul li dl dd {
+    color: #333; }
+
+/*行业指数*/
+.container-bg {
+    background-color: #f9f9f9;
+    padding-top: 36px; }
+
+/*商品推荐*/
+.recommend {
+    width: 958px;
+    float: left;
+}
+
+.index-title {
+    width: 100%; }
+.index-title h5 {
+    font: bold 16px/30px "Microsoft Yahei";
+    color: #000;
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 10px; }
+.index-title h5:after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 50%;
+    width: 2px;
+    height: 16px;
+    margin-top: -8px;
+    background-color: #000; }
+.index-title h4 {
+    margin-top: 5px;
+    line-height: 16px; }
+.index-title h4 span {
+    font: bold 16px/20px "Microsoft Yahei";
+    display: inline-block;
+    color: #333; }
+.index-title h3 {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    line-height: 80px;
+    height: 80px;
+    position: relative; }
+.index-title h3 a {
+    width: 81px;
+    height: 28px;
+    border: 1px solid #bd0202;
+    background: #fff;
+    text-align: center;
+    border-radius: 28px;
+    font: 12px/26px "microsoft Yahei";
+    color: #bd0202;
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px; }
+.index-title h3 a:hover {
+    background: #bd0202;
+    color: #fff; }
+.index-title dl dt {
+    float: left;
+    font: bold 24px/30px "Microsoft Yahei";
+    color: #333;
+    height: 50px; }
+.index-title dl dt:after {
+    height: 5px !important;
+    background-color: #bd0202 !important;
+    width: 2em !important; }
+.index-title dl dd {
+    float: right; }
+.index-title dl dd a {
+    border: 1px solid #666;
+    color: #666;
+    width: 90px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 30px;
+    float: right;
+    text-align: center;
+    line-height: 28px; }
+.index-title dl dd a:hover {
+    background-color: #e03710;
+    border-color: #e03710;
+    color: #fff; }
+
+.recommend-bor {
+    width: 230px;
+    height: 300px;
+    border: 1px solid #f5f5f5;
+    background: #fff url(../img/icon_recommend.png) no-repeat 200px 1px;
+    padding: 15px;
+    float: left;
+    margin-right: 9px; }
+.recommend-bor h5 {
+    font-size: 16px;
+    color: #333; }
+.recommend-bor ul {
+    height: 70px;
+    margin-top: 10px; }
+.recommend-bor ul li {
+    color: #999; }
+.recommend-bor dl dt {
+    color: #999; }
+.recommend-bor dl dt strong {
+    font-size: 20px;
+    line-height: 30px;
+    color: #bd0202; }
+.recommend-bor dl dd {
+    color: #bebebe;
+    margin-top: 10px; }
+
+/*热门指数*/
+.hot {
+    float: right;
+}
+.hot .hot-box {
+    width: 240px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #f5f5f5;
+}
+.hot .hot-box ul {
+    height: 45px;
+    padding: 15px 10px 0;
+}
+.hot .hot-box ul li {
+    width: 48px;
+    height: 18px;
+    border: 1px solid #e03710;
+    float: left;
+    line-height: 16px;
+    text-align: center;
+    color: #e03710;
+    margin: 0 3px;
+    cursor: pointer;
+}
+.hot .hot-box ul li.active {
+    background: #e03710;
+    color: #fff;
+}
+
+#svgcharts {
+    height: 150px;
+}
+
+/*热门指数*/
+
+/*个人护理*/
+.personalcare {
+    width: 1200px;
+    float: left;
+}
+
+.mtop45 {
+    margin-top: 45px !important;
+}
+
+/*------------------------footer --------------------------*/
+.footer {
+    font-size: 14px;
+    height: 160px;
+    background-color: #eee;
+    color: #fff;
+}
+
+.footer-f {
+    clear: both;
+}
+.footer_span {
+    margin-right: 10px;
+    display: block;
+    float: left;
+    color: #666;
+    line-height: 25px;
+}
+/*------------------------footer end--------------------------*/
+
+.login{
+    height: 610px;
+    width: 1000px;
+    background-image: url('../img/keji.jpg');
+}
+
+.main_box{
+    float: right;
+    width: 300px;
+    height: 300px;
+    margin: 60px 30px;
+    background-color: #fffcef;
+    text-align: center;
+}
+
+.main_box input{
+    height: 25px;
+}
+
+.btn-success{
+    margin:20px 10px;
+    background-color: green;
+    width: 80px;
+    height:25px;
+    color: white;
+    font-size: 12px;
+}
+
+.btn-default{
+    margin:20px 10px;
+    background-color: #ccc;
+    width: 80px;
+    height:25px;
+    font-size: 12px;
+}
