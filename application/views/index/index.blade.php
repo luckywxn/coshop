@@ -19,12 +19,12 @@
                 <div class="w100r">
                     @foreach($recommendGoods as $item)
                         <div class="recommend-bor">
-                            <a href="#">
+                            <a href="/goods/index/id/{{$item['sysno']}}">
                                 <img src="{{$item['path']}}/{{$item['name']}}">
                                 <ul>
                                     <li title="">{{$item['goodsname']}}</li>
                                     <li title=""><span style="color: red;font-size: 16px"> ￥{{$item['price']}}</span></li>
-                                    <li title="">供应商 | {{$item['companyname']}}</li>
+                                    <li title="">商户名称 | {{$item['merchant_name']}}</li>
                                 </ul>
                             </a>
                         </div>
@@ -45,7 +45,7 @@
                                 <ul>
                                     <li title="">{{$item['goodsname']}}</li>
                                     <li title=""><span style="color: red;font-size: 16px"> ￥{{$item['price']}}</span></li>
-                                    <li title="">供应商 | {{$item['companyname']}}</li>
+                                    <li title="">商户名称 | {{$item['merchant_name']}}</li>
                                 </ul>
                             </a>
                         </div>

@@ -59,8 +59,8 @@ class GoodsModel{
     }
 
     public function getGoodsdetailbyId($id){
-        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,cc.companyname,cga.path,cga.name FROM `concap_goods` cg
-                LEFT JOIN concap_company cc ON cc.sysno = cg.company_sysno
+        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name FROM `concap_goods` cg
+                LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
                 LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
                 WHERE cg.sysno = $id";
         return $this->dbh->select_row($sql);
