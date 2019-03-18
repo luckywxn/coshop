@@ -40,11 +40,11 @@ class ShoppingtrolleyModel
         $result['totalRow'] = count($totalRow);
         if($result['totalRow']){
             if(isset($params['page'])&&$params['page'] == false){
-                $sql = "SELECT cst.sysno,cst.number,cu.nickname,cg.goodsno,cg.goodsname,cg.price,cc.companyname,cga.path,cga.name
+                $sql = "SELECT cst.sysno,cst.number,cu.nickname,cg.goodsno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name
                         FROM `concap_shopping_trolley` cst
                         LEFT JOIN concap_user cu ON cu.sysno = cst.user_sysno
                         LEFT JOIN concap_goods cg ON cg.sysno = cst.goods_sysno
-                        LEFT JOIN concap_company cc ON cc.sysno = cg.company_sysno
+                        LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
                         LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
                         $where $orders";
                 $result['list'] = $this->dbh->select($sql);
@@ -52,11 +52,11 @@ class ShoppingtrolleyModel
                 $result['totalPage'] = ceil($result['totalRow'] / $params['pageSize']);
                 $this->dbh->set_page_num($params['pageCurrent']);
                 $this->dbh->set_page_rows($params['pageSize']);
-                $sql = "SELECT cst.sysno,cst.number,cu.nickname,cg.goodsno,cg.goodsname,cg.price,cc.companyname,cga.path,cga.name
+                $sql = "SELECT cst.sysno,cst.number,cu.nickname,cg.goodsno,cg.goodsname,cg.price,cc.merchant_name,cga.path,cga.name
                         FROM `concap_shopping_trolley` cst
                         LEFT JOIN concap_user cu ON cu.sysno = cst.user_sysno
                         LEFT JOIN concap_goods cg ON cg.sysno = cst.goods_sysno
-                        LEFT JOIN concap_company cc ON cc.sysno = cg.company_sysno
+                        LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
                         LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
                         $where $orders";
                 $result['list'] = $this->dbh->select_page($sql);

@@ -31,7 +31,9 @@ class OrdersController extends Yaf_Controller_Abstract
 
         $order = new OrdersModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
         $list =  $order->searchOrders($search);
-//        echo "<pre>";var_dump($list['list']);exit;
+//        echo "<pre>";
+//        var_dump($list['list']);
+//        exit;
         $params['orders'] = $list['list'];
         $this->getView()->make('orders.list',$params);
     }

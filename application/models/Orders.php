@@ -62,10 +62,10 @@ class OrdersModel
                 $result['list'] = $this->dbh->select_page($sql);
             }
 
-            $sql = "SELECT cod.orders_sysno,cod.number,cg.goodsno,cg.goodsname,cg.price,cc.companyname,cga.path,cga.name
+            $sql = "SELECT cod.orders_sysno,cod.number,cg.goodsno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name
                         FROM `concap_orders_detail` cod
                         LEFT JOIN concap_goods cg ON cg.sysno = cod.goods_sysno
-                        LEFT JOIN concap_company cc ON cc.sysno = cg.company_sysno
+                        LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
                         LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno ";
             $detail = $this->dbh->select($sql);
             if(!empty($result['list'])){

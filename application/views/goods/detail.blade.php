@@ -1,5 +1,5 @@
 <html>
-<title>消费资本--成就亿万精彩人生</title>
+<title>CoShop</title>
 <link rel="stylesheet" href="/static/css/lib/iconfont/iconfont.css">
 <link rel="stylesheet" href="/static/css/common.css">
 <link rel="stylesheet" href="/static/css/index.css">

@@ -1,5 +1,5 @@
 <html>
-<title>消费资本--成就亿万精彩人生</title>
+<title>CoShop</title>
 <link rel="stylesheet" href="/static/css/lib/iconfont/iconfont.css">
 <link rel="stylesheet" href="/static/css/common.css">
 <link rel="stylesheet" href="/static/css/index.css">
@@ -31,7 +31,7 @@
                     @foreach($trolleys as $trolley)
                     <tr id="tr{{$trolley['sysno']}}">
                         <td width="80px"><input type="checkbox"></td>
-                        <td width="500px"><img src="{{$trolley['path']}}/{{$trolley['name']}}" width="80px" style="vertical-align:middle;">{{$trolley['goodsname']}}({{$trolley['companyname']}})</td>
+                        <td width="500px"><img src="{{$trolley['path']}}/{{$trolley['name']}}" width="80px" style="vertical-align:middle;">{{$trolley['goodsname']}}({{$trolley['merchant_name']}})</td>
                         <td id="price{{$trolley['sysno']}}">{{$trolley['price']}}</td>
                         <td>
                             <input type="button" style="width: 15px" value="-" onclick="subnum({{$trolley['sysno']}})">
