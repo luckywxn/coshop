@@ -15,7 +15,7 @@ class OrdersController extends Yaf_Controller_Abstract
         # parent::init();
     }
 
-    /*
+    /**
      * 商品列表
      */
     public function listAction(){
@@ -38,7 +38,7 @@ class OrdersController extends Yaf_Controller_Abstract
         $this->getView()->make('orders.list',$params);
     }
 
-    /*
+    /**
      * 商品列表数据
      */
     public function listJsonAction(){
@@ -54,6 +54,23 @@ class OrdersController extends Yaf_Controller_Abstract
         $Orders = new OrdersModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
         $list =  $Orders->searchOrders($search);
         echo json_encode($list);
+    }
+
+    /**
+     * 从购物车结算打开下单页面
+     */
+    public function jiesuanAction(){
+        $request = $this->getRequest();
+        $datastr = $request->getParam('strolley','');
+//        $var = explode(",",$datastr);
+        $Shoppingtrolley = new ShoppingtrolleyModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
+        $trolleys =  $Shoppingtrolley->getGoodsDetailByIds($datastr);
+        $params['trolleys'] = $trolleys;
+        foreach ($trolleys as $key=>$val){
+            $params['totalprice'] += $val['totalprice'];
+        }
+
+        $this->getView()->make('orders.order',$params);
     }
 
 

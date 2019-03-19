@@ -30,8 +30,8 @@
                     <tbody>
                     @foreach($trolleys as $trolley)
                     <tr id="tr{{$trolley['sysno']}}">
-                        <td width="80px"><input type="checkbox"></td>
-                        <td width="500px"><img src="{{$trolley['path']}}/{{$trolley['name']}}" width="80px" style="vertical-align:middle;">{{$trolley['goodsname']}}({{$trolley['merchant_name']}})</td>
+                        <td width="80px"><input type="checkbox" value="{{$trolley['sysno']}}"></td>
+                        <td width="500px"><img src="{{$trolley['path']}}/{{$trolley['name']}}" width="80px" style="margin:3px 25px;float:left;vertical-align:middle;"><span style="float: left;">{{$trolley['goodsname']}}({{$trolley['merchant_name']}})</span></td>
                         <td id="price{{$trolley['sysno']}}">{{$trolley['price']}}</td>
                         <td>
                             <input type="button" style="width: 15px" value="-" onclick="subnum({{$trolley['sysno']}})">
@@ -64,7 +64,7 @@
                         <em id="J_Total">0.00</em>
                     </strong>
                 </div>
-                <button class="jiesuan">结算</button>
+                <button class="jiesuan" onclick="jiesuan()">结算</button>
             </div>
         </div>
     </div>
@@ -102,6 +102,7 @@
         }
     }
 
+    //商品选择从新计算总价
     $("input[type='checkbox']").click(function (){
         var data = [];
         var totalprice = 0;
@@ -128,6 +129,7 @@
         })
     })
 
+    //商品数量增加
     function addnum(val){
         $("#num"+val).val(parseInt($("#num"+val).val())+1);
         var num = parseInt($("#num"+val).val());
@@ -144,6 +146,7 @@
         })
     }
 
+    //商品数量减少
     function subnum(val){
         if(parseInt($("#num"+val).val())>1){
             $("#num"+val).val(parseInt($("#num"+val).val())-1);
@@ -162,6 +165,7 @@
         }
     }
 
+    //从购物车删除商品
     function deltrolley(val){
         var index = $("#tr"+val)[0].rowIndex;
         $("#trolleytab tr:eq("+index+")").remove()
@@ -177,4 +181,20 @@
             }
         })
     }
+
+    //结算、进入下单页面
+    function jiesuan() {
+        var datastr = '';
+        $("input[type='checkbox']").each(function(option) {//遍历每一行
+            if (option != 0) {
+                if ($("input[type='checkbox']").get(option).checked) {
+                    var strolleyid = $("input[type='checkbox']").get(option).value;
+                    datastr += strolleyid + ',';
+                }
+            }
+        })
+        datastr = datastr.substring(0,datastr.length-1);
+        window.location.href = "/orders/jiesuan/strolley/"+datastr;
+    }
+
 </script>

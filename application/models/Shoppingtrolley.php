@@ -87,5 +87,20 @@ class ShoppingtrolleyModel
         return $this->dbh->update('concap_shopping_trolley', $input, 'sysno=' . intval($id));
     }
 
+    /**
+     * 根据购物车ids查询商品详情
+     */
+    public function getGoodsDetailByIds($ids){
+        $sql = "SELECT cst.sysno,cst.number,cg.goodsno,cg.goodsname,cg.price,cst.number*cg.price totalprice,cm.merchant_name,cga.path,cga.name
+                        FROM `concap_shopping_trolley` cst
+                        LEFT JOIN concap_goods cg ON cg.sysno = cst.goods_sysno
+                        LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
+                        LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
+                        WHERE cst.sysno IN ($ids)";
+        $result = $this->dbh->select($sql);
+        return $result;
+    }
+
+
 
 }
