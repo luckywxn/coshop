@@ -49,11 +49,12 @@
                 </div>
                 <div class="price-sum">
                     <span>合计：</span>
+                    <span class="order-price">￥</span>
                     <strong class="price">
                         <em id="J_Total">{{$totalprice}}</em>
                     </strong>
                 </div>
-                <button class="jiesuan" onclick="jiesuan()">提交订单</button>
+                <button class="place_order" onclick="placeOrder()">提交订单</button>
             </div>
         </div>
     </div>
@@ -64,31 +65,9 @@
 </body>
 </html>
 <script>
-    //全选、全不选
-    function selectAll() {
-        if ($("input[type='checkbox']").get(0).checked) {
-            $("input[type='checkbox']").prop("checked","checked");
-            var data = [];
-            var totalprice = 0;
-            $("#trolleytab tbody tr").each(function(trindex,tritem){//遍历每一行
-                if(trindex!=0){
-                    $(tritem).find('td').each(function(tdindex,tditem) {
-                        if (tdindex==4) {
-                            data[trindex] = tditem.innerHTML;
-                        }
-                    });
-                }else{
-                    data[trindex] = 0;
-                }
-            });
-            for(var i=0;i<data.length;i++){
-                totalprice += parseFloat(data[i]);
-            }
-            $("#J_Total").html(totalprice);
-        } else {
-            $("input[type='checkbox']").prop("checked","");
-            $("#J_Total").html("0.00");
-        }
+    //提交订单
+    function placeOrder() {
+        window.location.href = "/orders/neworder";
     }
 
 </script>

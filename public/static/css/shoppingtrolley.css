@@ -35,17 +35,19 @@
     padding-left: 50px;
     display: inline-block;
     line-height: 48px;
+    /*font-size: 20px;*/
     color: #3c3c3c;
 }
 
+.jiesuandiv .float-bar-right .price-sum .order-price{
+    font-size: 26px;
+    margin-right: 4px;
+    color: #999;
+}
+
 .jiesuandiv .float-bar-right .price-sum .price{
-    display: inline-block;
     color: #f40;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 50px;
-    font-family: Arial;
-    vertical-align: middle;
+    font: 700 26px tahoma;
 }
 
 .jiesuan{
@@ -53,6 +55,17 @@
     height:50px;
     color: white;
     background-color: #ccc;
+    border: none;
+    display: inline-block;
+    font-size: 18px;
+    float: right;
+}
+
+.place_order{
+    width: 180px;
+    height:50px;
+    color: white;
+    background-color: #f40;
     border: none;
     display: inline-block;
     font-size: 18px;
