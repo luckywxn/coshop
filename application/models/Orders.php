@@ -25,8 +25,8 @@ class OrdersModel
 
     public function searchOrders($params){
         $filter = array();
-        if (isset($params['sysno']) && $params['sysno'] != '') {
-            $filter[] = " cu.`sysno` = ".$params['sysno']." ";
+        if (isset($params['member_no']) && $params['member_no'] != '') {
+            $filter[] = " cu.`member_no` = '{$params['member_no']}' ";
         }
         $where =" WHERE co.`isdel` = 0 ";
         if (1 <= count($filter)) {
@@ -35,38 +35,38 @@ class OrdersModel
         $orders = " ORDER BY co.created_at DESC";
 
         $sql = "SELECT count(co.`sysno`) FROM `concap_orders` co
-                LEFT JOIN concap_user cu ON cu.sysno = co.user_sysno $where";
+                LEFT JOIN user_member cu ON cu.member_no = co.member_no $where";
         $totalRow = $this->dbh->select($sql);
         $result['totalRow'] = count($totalRow);
         if($result['totalRow']){
             if(isset($params['page'])&&$params['page'] == false){
-                $sql = "SELECT co.sysno,co.ordersno,co.logisticsno,co.orderstatus,cua.phone,cua.address,sum(cg.price*cod.number) totalprice,co.created_at,co.paytime_at,co.sendtime_at,cu.nickname
+                $sql = "SELECT co.sysno,co.ordersno,co.logisticsno,co.orderstatus,cua.phone,cua.address,sum(cg.price*cod.number) totalprice,co.created_at,co.paytime_at,co.sendtime_at,cu.nick_name
                         FROM `concap_orders` co
-                        LEFT JOIN concap_user cu ON cu.sysno = co.user_sysno
+                        LEFT JOIN user_member cu ON cu.member_no = co.member_no
                         LEFT JOIN concap_orders_detail cod ON cod.orders_sysno = co.sysno
-                        LEFT JOIN concap_goods cg ON cg.sysno = cod.goods_sysno
-                        LEFT JOIN concap_user_address cua ON cua.sysno = co.address_sysno
+                        LEFT JOIN goods cg ON cg.sysno = cod.goods_sysno
+                        LEFT JOIN user_member_address cua ON cua.sysno = co.address_sysno
                         $where GROUP BY co.sysno $orders";
                 $result['list'] = $this->dbh->select($sql);
             }else{
                 $result['totalPage'] = ceil($result['totalRow'] / $params['pageSize']);
                 $this->dbh->set_page_num($params['pageCurrent']);
                 $this->dbh->set_page_rows($params['pageSize']);
-                $sql = "SELECT co.sysno,co.ordersno,co.logisticsno,co.orderstatus,cua.phone,cua.address,sum(cg.price*cod.number) totalprice,co.created_at,co.paytime_at,co.sendtime_at,cu.nickname
+                $sql = "SELECT co.sysno,co.ordersno,co.logisticsno,co.orderstatus,cua.phone,cua.address,sum(cg.price*cod.number) totalprice,co.created_at,co.paytime_at,co.sendtime_at,cu.nick_name
                         FROM `concap_orders` co
-                        LEFT JOIN concap_user cu ON cu.sysno = co.user_sysno
+                        LEFT JOIN user_member cu ON cu.member_no = co.member_no
                         LEFT JOIN concap_orders_detail cod ON cod.orders_sysno = co.sysno
-                        LEFT JOIN concap_goods cg ON cg.sysno = cod.goods_sysno
-                        LEFT JOIN concap_user_address cua ON cua.sysno = co.address_sysno
+                        LEFT JOIN goods cg ON cg.sysno = cod.goods_sysno
+                        LEFT JOIN user_member_address cua ON cua.sysno = co.address_sysno
                         $where GROUP BY co.sysno $orders";
                 $result['list'] = $this->dbh->select_page($sql);
             }
 
             $sql = "SELECT cod.orders_sysno,cod.number,cg.goodsno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name
                         FROM `concap_orders_detail` cod
-                        LEFT JOIN concap_goods cg ON cg.sysno = cod.goods_sysno
-                        LEFT JOIN concap_merchant cm ON cm.sysno = cg.company_sysno
-                        LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno ";
+                        LEFT JOIN goods cg ON cg.sysno = cod.goods_sysno
+                        LEFT JOIN user_merchant cm ON cm.merchant_no = cg.merchant_no
+                        LEFT JOIN goods_attach cga ON cga.goods_sysno = cg.sysno ";
             $detail = $this->dbh->select($sql);
             if(!empty($result['list'])){
                 foreach($result['list'] as $key => $item){

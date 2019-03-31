@@ -28,11 +28,11 @@ class IndexModel{
     }
 
     public function getgoods($type){
-        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,cc.merchant_name,cga.path,cga.name
-                FROM `concap_goods` cg
-                LEFT JOIN concap_merchant cc ON cc.sysno = cg.company_sysno
-                LEFT JOIN concap_goods_attach cga ON cga.goods_sysno = cg.sysno
-                WHERE cg.`isdel` = 0 AND cg.status = 1 AND cga.use = 0 AND cg.classify_sysno = $type";
+        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,um.merchant_name,cga.path,cga.name
+                FROM `goods` cg
+                LEFT JOIN user_merchant um ON um.merchant_no = cg.merchant_no
+                LEFT JOIN goods_attach cga ON cga.goods_sysno = cg.sysno
+                WHERE cg.`ok_del` = 0 AND cg.status = 1 AND cga.use = 0 AND cg.classify_sysno = $type";
         return $this->dbh->select($sql);
     }
 

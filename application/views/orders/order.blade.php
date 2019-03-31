@@ -41,12 +41,6 @@
         <div class="jiesuandiv">
             <div class="select-all"></div>
             <div class="float-bar-right">
-
-                <div class="amount-sum">
-                    {{--<span>已选商品</span>--}}
-                    {{--<em id="J_SelectedItemsCount">0</em>--}}
-                    {{--<span>件</span>--}}
-                </div>
                 <div class="price-sum">
                     <span>合计：</span>
                     <span class="order-price">￥</span>
@@ -67,6 +61,7 @@
 <script>
     //提交订单
     function placeOrder() {
+
         window.location.href = "/orders/neworder";
     }
 

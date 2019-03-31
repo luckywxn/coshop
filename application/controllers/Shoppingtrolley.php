@@ -25,7 +25,7 @@ class ShoppingtrolleyController extends Yaf_Controller_Abstract
             $this->getView()->make('index.login', array());
         }
         $search = array(
-            'sysno' => $params['user']['sysno'],
+            'member_no' => $params['user']['member_no'],
             'page' => false,
         );
 

@@ -4,7 +4,7 @@
         <div class="header-top-right">
             <span>
                 @if($user)
-                    <a href="###" rel="nofollow">{{$user['nickname']}}</a>
+                    <a href="###" rel="nofollow">{{$user['nick_name']}}</a>
                     <a href="/index/logout" rel="nofollow">退出</a>
                 @else
                 <a href="/index/login" rel="nofollow">请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;

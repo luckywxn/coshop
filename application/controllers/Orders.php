@@ -25,7 +25,7 @@ class OrdersController extends Yaf_Controller_Abstract
             $this->getView()->make('index.login', array());
         }
         $search = array(
-            'sysno' => $params['user']['sysno'],
+            'member_no' => $params['user']['member_no'],
             'page' => false,
         );
 
@@ -77,7 +77,9 @@ class OrdersController extends Yaf_Controller_Abstract
      * 下单
      */
     public function neworderAction(){
-        header("Location:http://alipay.strongculture.cn/");
+
+
+//        header("Location:http://alipay.strongculture.cn/");
     }
 
 

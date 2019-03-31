@@ -19,7 +19,7 @@ class IndexController extends Yaf_Controller_Abstract {
 		$params['user']  = Yaf_Registry::get(SSN_VAR);
 		$Index = new IndexModel(Yaf_Registry :: get("db"), Yaf_Registry :: get('mc'));
         //推荐商品
-        $recommendGoods = $Index ->getgoods(0);
+        $recommendGoods = $Index ->getgoods(1);
         foreach($recommendGoods as $key =>$good){
             if(strlen($good['goodsname'])>48){
                 $goods[$key]['goodsname'] = substr($good['goodsname'],0,41)."...";
@@ -58,13 +58,15 @@ class IndexController extends Yaf_Controller_Abstract {
 		if($user = $S->userLogin($params))
 		{
 			$ip = COMMON::getclientIp();
+            setcookie ( "u_id", $user['sysno'], 0, "/", '.' . WEB_DOMAIN );
+            Yaf_Session::getInstance ()->set ( SSN_VAR, $user );
 			$userUpdate = array('lastlogintime'=>'=NOW()','lastloginip'=>$ip);
-			if($S->setUserInfo($userUpdate,$user['sysno']))
-			{
-				unset($user['userpwd']);
-				setcookie ( "u_id", $user['sysno'], 0, "/", '.' . WEB_DOMAIN );
-				Yaf_Session::getInstance ()->set ( SSN_VAR, $user );
-			}
+//			if($S->setUserInfo($userUpdate,$user['sysno']))
+//			{
+//				unset($user['userpwd']);
+//				setcookie ( "u_id", $user['sysno'], 0, "/", '.' . WEB_DOMAIN );
+//				Yaf_Session::getInstance ()->set ( SSN_VAR, $user );
+//			}
 			header("Location: /" );
 		}else {
 			$messgin['msg'] = "用户名错误";
