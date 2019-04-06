@@ -61,15 +61,14 @@ class OrdersController extends Yaf_Controller_Abstract
      */
     public function jiesuanAction(){
         $request = $this->getRequest();
-        $datastr = $request->getParam('strolley','');
-//        $var = explode(",",$datastr);
+        $datastr = $request->getPost('data','');
+        $params['datastr'] = $datastr;
         $Shoppingtrolley = new ShoppingtrolleyModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
         $trolleys =  $Shoppingtrolley->getGoodsDetailByIds($datastr);
         $params['trolleys'] = $trolleys;
         foreach ($trolleys as $key=>$val){
             $params['totalprice'] += $val['totalprice'];
         }
-
         $this->getView()->make('orders.order',$params);
     }
 
@@ -77,9 +76,76 @@ class OrdersController extends Yaf_Controller_Abstract
      * 下单
      */
     public function neworderAction(){
+        $request = $this->getRequest();
+        $datastr = $request->getPost('data','');
+        $Orders = new OrdersModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
+        $res = $Orders->addOrder($datastr);
+        $data = array(
+            "WIDout_trade_no"=>$res["order_no"],
+            "WIDsubject"=>$res["order_no"],
+            "WIDtotal_amount"=>$res["total_price"],
+            "WIDbody"=>"",
+        );
+        $url = "http://alipay.strongculture.cn/pagepay/pagepay.php";
+        $res = $this->http_request($url, $data);
+        var_dump($res);
+    }
 
+    /**
+     * 支付订单
+     */
+    public function payorderAction(){
+        $request = $this->getRequest();
+        $data = $request ->getPost();
+        $url = "http://alipay.strongculture.cn/pagepay/pagepay.php";
+        $res = $this->http_request($url, $data);
+        var_dump($res);
+    }
 
-//        header("Location:http://alipay.strongculture.cn/");
+    //HTTP请求（支持HTTP/HTTPS，支持GET/POST）
+    function http_request($url, $data = null)
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);//设置header
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        if (!empty($data)){
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        $output = curl_exec($curl);
+
+        curl_close($curl);
+        return $output;
+    }
+
+    /**
+     * 支付成功回调地址
+     */
+    public function payreturnAction(){
+        $request = $this->getRequest();
+        $order_no = $request ->getParam("out_trade_no","");
+        $trade_no = $request ->getParam("trade_no","");
+        if($order_no&&$trade_no){
+            $data = array(
+                "pay_no"=>$trade_no,
+                "paytime_at"=>"=NOW()",
+                "order_status"=>2,//已付款
+                "updated_at"=>"=NOW()",
+            );
+            $Orders = new OrdersModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));
+            $res = $Orders->updateOrder($order_no,$data);
+            if($res){
+                header("Location: http://coshop.strongculture.cn/orders/list");
+            }else{
+                echo "更新订单失败";
+            }
+        }else{
+            echo "请求失败";
+        }
     }
 
 

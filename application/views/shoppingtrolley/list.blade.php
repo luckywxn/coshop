@@ -9,12 +9,10 @@
 <body>
 
 @include('index.header')
-
-
 <!--内容区-->
 <div class="container-bg">
     <div class="container">
-        <!-- 商品详情-->
+        <!-- 购物车列表-->
         <div class="clear"></div>
         <div class="w100r mtop45">
             <div class="personalcare">
@@ -47,25 +45,21 @@
 
             </div>
         </div>
-        <!-- 商品详情 end-->
+        <!-- 购物车列表 end-->
         <div class="clear"></div>
         <div class="jiesuandiv">
-            <div class="select-all"></div>
-            <div class="float-bar-right">
-
-                <div class="amount-sum">
-                    {{--<span>已选商品</span>--}}
-                    {{--<em id="J_SelectedItemsCount">0</em>--}}
-                    {{--<span>件</span>--}}
+            <form id="jiesuanform" action="/orders/jiesuan" method="POST">
+                <div class="float-bar-right">
+                    <div class="price-sum">
+                        <span>合计（不含运费）：</span>
+                        <strong class="price">
+                            <em id="J_Total">0.00</em>
+                        </strong>
+                    </div>
+                    <input type="hidden" id="data" name="data" value="">
+                    <input type="button" class="jiesuan" onclick="jieSuan()" value="结算" />
                 </div>
-                <div class="price-sum">
-                    <span>合计（不含运费）：</span>
-                    <strong class="price">
-                        <em id="J_Total">0.00</em>
-                    </strong>
-                </div>
-                <button class="jiesuan" onclick="jiesuan()">结算</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -174,7 +168,7 @@
         $.ajax({
             type:"POST",
             url: "/shoppingtrolley/updatenum",
-            data: {id:val,num:num,isdel:1},
+            data: {id:val,num:num,ok_del:1},
             dataType: "json",
             success: function(option){
                 console.log(option.mes);
@@ -183,7 +177,7 @@
     }
 
     //结算、进入下单页面
-    function jiesuan() {
+    function jieSuan() {
         var datastr = '';
         $("input[type='checkbox']").each(function(option) {//遍历每一行
             if (option != 0) {
@@ -194,7 +188,8 @@
             }
         })
         datastr = datastr.substring(0,datastr.length-1);
-        window.location.href = "/orders/jiesuan/strolley/"+datastr;
+        $("#data").val(datastr);
+        $("#jiesuanform").submit();
     }
 
 </script>

@@ -43,7 +43,7 @@ class ShoppingtrolleyController extends Yaf_Controller_Abstract
         $id = $request->getPost('id',0);
         $input = array(
             'number'=> $request->getPost('num',0),
-            'isdel'=> $request->getPost('isdel',0),
+            'ok_del'=> $request->getPost('ok_del',0),
             'updated_at' => '=NOW()'
         );
         $Shoppingtrolley = new ShoppingtrolleyModel(Yaf_Registry::get("db"),Yaf_Registry::get('mc'));

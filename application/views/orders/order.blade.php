@@ -17,7 +17,7 @@
         <div class="clear"></div>
         <div class="w100r mtop45">
             <h2>确认订单信息</h2>
-            <table id="trolleytab" border="1px" width="1100px" cellspacing="0" cellpadding="0" style="text-align: center">
+            <table id="ordertab" border="1px" width="1100px" cellspacing="0" cellpadding="0" style="text-align: center">
                 <tr>
                     <td>商品信息</td>
                     <td>单价</td>
@@ -39,17 +39,19 @@
         <!-- 确认订单信息 end-->
         <div class="clear"></div>
         <div class="jiesuandiv">
-            <div class="select-all"></div>
-            <div class="float-bar-right">
-                <div class="price-sum">
-                    <span>合计：</span>
-                    <span class="order-price">￥</span>
-                    <strong class="price">
-                        <em id="J_Total">{{$totalprice}}</em>
-                    </strong>
+            <form id="newOrder" action="/orders/neworder" method="POST">
+                <div class="float-bar-right">
+                    <div class="price-sum">
+                        <span>合计：</span>
+                        <span class="order-price">￥</span>
+                        <strong class="price">
+                            <em id="J_Total">{{$totalprice}}</em>
+                        </strong>
+                    </div>
+                    <input type="hidden" name="data" value="{{$datastr}}">
+                    <button type="submit" class="place_order">提交订单</button>
                 </div>
-                <button class="place_order" onclick="placeOrder()">提交订单</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -58,11 +60,3 @@
 
 </body>
 </html>
-<script>
-    //提交订单
-    function placeOrder() {
-
-        window.location.href = "/orders/neworder";
-    }
-
-</script>

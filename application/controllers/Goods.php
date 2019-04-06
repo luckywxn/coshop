@@ -9,7 +9,6 @@ class GoodsController extends Yaf_Controller_Abstract {
      */
     public function init() {
         # parent::init();
-        $user  = Yaf_Registry::get(SSN_VAR);
     }
 
     /**
@@ -30,7 +29,7 @@ class GoodsController extends Yaf_Controller_Abstract {
     public function addtrolleyAction(){
         $request = $this->getRequest();
         $input = array(
-            'user_sysno'=> $request->getPost('user_sysno',0),
+            'member_no'=> $request->getPost('member_no',0),
             'goods_sysno'=> $request->getPost('goods_sysno',0),
             'number' => $request->getPost('num',0),
             'created_at' => '=NOW()',

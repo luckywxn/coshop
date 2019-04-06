@@ -13,7 +13,7 @@
 <!--内容区-->
 <div class="container-bg">
     <div class="container">
-        <input type="hidden" id="user_sysno" name="user_sysno" value="{{$user['sysno']}}">
+        <input type="hidden" id="member_no" name="member_no" value="{{$user['member_no']}}">
         <!-- 商品详情-->
         <div class="clear"></div>
         <div class="w100r mtop45">
@@ -61,8 +61,8 @@
     }
 
     function addtrolley(){
-        var user_sysno =  $("#user_sysno").val();
-        if(!user_sysno){
+        var member_no =  $("#member_no").val();
+        if(!member_no){
             alert("请先登录");
             return false;
         }
@@ -71,7 +71,7 @@
         $.ajax({
             type:"POST",
             url: "/goods/addtrolley",
-            data: {user_sysno:user_sysno,goods_sysno:goods_sysno,num:num},
+            data: {member_no:member_no,goods_sysno:goods_sysno,num:num},
             dataType: "json",
             success: function(option){
                 alert(option.mes)
