@@ -56,7 +56,7 @@
             </table>
             <br>
             @endforeach
-            <form id="orderPay" style="display: none" action="/orders/payorder" method="POST">
+            <form id="orderPay" style="display: none" action="http://alipay.strongculture.cn/pagepay/pagepay.php" method="POST">
                 <input id="WIDout_trade_no" type="text" name="WIDout_trade_no" value="">
                 <input id="WIDsubject" type="text" name="WIDsubject" value="">
                 <input id="WIDtotal_amount" type="text" name="WIDtotal_amount" value="">
