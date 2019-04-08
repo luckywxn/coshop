@@ -44,7 +44,12 @@
             <div class="login_msg text-center"><font color="red">{{$msg}}</font></div>
             <div style="height: 20px;"></div>
             <div class="text-center">
-                <button type="submit" class="btn btn-success btn-lg btnlogin">&nbsp;登&nbsp;录&nbsp;</button>
+                <button type="submit" class="J_Submit">&nbsp;登&nbsp;录&nbsp;</button>
+            </div>
+
+            <div style="height: 20px;"></div>
+            <div class="text-center">
+                <a style="float: right;margin-right: 30px;" href="/index/register">&nbsp;免费注册&nbsp;</a>
             </div>
         </form>
     </div>

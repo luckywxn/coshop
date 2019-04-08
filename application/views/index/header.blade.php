@@ -4,11 +4,11 @@
         <div class="header-top-right">
             <span>
                 @if($user)
-                    <a href="###" rel="nofollow">{{$user['nick_name']}}</a>
+                    <a href="###" rel="nofollow">{{$user['user_name']}}</a>
                     <a href="/index/logout" rel="nofollow">退出</a>
                 @else
                 <a href="/index/login" rel="nofollow">请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="###" rel="nofollow">免费注册</a>
+                <a href="/index/register" rel="nofollow">免费注册</a>
                 @endif
             </span>
             <span><a href="/orders/list" rel="nofollow">我的订单</a></span>

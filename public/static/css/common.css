@@ -404,7 +404,7 @@ ul, ol {
     border: none;
 }
 
-.btn-success{
+.J_Submit{
     width: 224px;
     height: 42px;
     border: 0;
@@ -421,10 +421,6 @@ ul, ol {
     zoom: 1;
 }
 
-.btn-default{
-    margin:20px 10px;
-    background-color: #ccc;
-    width: 80px;
-    height:25px;
-    font-size: 12px;
+.captcha{
+    width: 150px;
 }
