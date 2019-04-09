@@ -2,9 +2,9 @@
 use Gregwar\Captcha\CaptchaBuilder;
 
 class GoodsController extends Yaf_Controller_Abstract {
+
     /**
      * IndexController::init()
-     *
      * @return void
      */
     public function init() {
@@ -12,7 +12,22 @@ class GoodsController extends Yaf_Controller_Abstract {
     }
 
     /**
-     * 显示整个后台页面框架及菜单
+     * 显示商品列表
+     */
+    public function goodsListAction() {
+        $params['user']  = Yaf_Registry::get(SSN_VAR);
+        $request = $this->getRequest();
+        $Goods = new GoodsModel(Yaf_Registry :: get("db"), Yaf_Registry :: get('mc'));
+        $search = array(
+            "goodsname" =>$request->getPost('goodsname',""),
+        );
+        $params = $Goods ->searchgoods($search);
+
+        $this->getView()->make('goods.list',$params);
+    }
+
+    /**
+     * 显示商品详情页面
      */
     public function IndexAction() {
         $request = $this->getRequest();
@@ -23,7 +38,7 @@ class GoodsController extends Yaf_Controller_Abstract {
         $this->getView()->make('goods.detail',$params);
     }
 
-    /*
+    /**
      * 加入购物车
      */
     public function addtrolleyAction(){

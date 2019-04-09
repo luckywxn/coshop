@@ -24,21 +24,13 @@
         <div class="logo"><a href="index.html"><img src="/static/img/logo.png" alt=""></a></div>
         <div class="header-box">
             <div class="w100r pull-left">
-                {{--<div class="header-volume">--}}
-                    {{--<dl>--}}
-                        {{--<dt>本年成交量</dt>--}}
-                        {{--<dd>888亿</dd>--}}
-                    {{--</dl>--}}
-                    {{--<dl>--}}
-                        {{--<dt>本月成交量</dt>--}}
-                        {{--<dd>66亿</dd>--}}
-                    {{--</dl>--}}
-                {{--</div>--}}
                 <div class="header-search">
-                    <dl>
-                        <dt><input type="text" class="form-control" placeholder="搜索 商家/商品"></dt>
-                        <dd><button type="button"><i class="iconfont icon-fangdajing"></i></button></dd>
-                    </dl>
+                    <form action="/goods/goodsList" method="POST">
+                        <dl>
+                            <dt><input type="text" class="form-control" name="goodsname" placeholder="搜索 商品"></dt>
+                            <dd><button type="submit"><i class="iconfont icon-fangdajing"></i></button></dd>
+                        </dl>
+                    </form>
                 </div>
             </div>
         </div>

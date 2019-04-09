@@ -9,7 +9,7 @@
             <span class="footer_span" style="width: 300px;height: 60px">
             </span>
             <span class="footer_span">
-                上海忠觉教育科技有限公司  |  Copyright © 2017 - 2018
+                上海忠觉教育科技有限公司  |  Copyright © 2017 - 2020
                 <br>
                 忠觉 strongculture.cn 版权所有  |  沪ICP备17037759号
             </span>

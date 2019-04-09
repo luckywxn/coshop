@@ -42,7 +42,7 @@ class ShoppingtrolleyModel
         $sql = "SELECT count(cst.`sysno`) FROM `shopping_trolley` cst
                 LEFT JOIN user_member cu ON cu.member_no = cst.member_no $where";
         $totalRow = $this->dbh->select($sql);
-        $result['totalRow'] = count($totalRow);
+        $result['totalRow'] = $totalRow;
         if($result['totalRow']){
             if(isset($params['page'])&&$params['page'] == false){
                 $sql = "SELECT cst.sysno,cst.number,cu.nick_name,cg.goodsno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name
