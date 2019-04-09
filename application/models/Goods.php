@@ -68,8 +68,13 @@ class GoodsModel{
         return $result;
     }
 
+    /**
+     * 通过商品id查询商品详情
+     * @param $id
+     * @return mixed
+     */
     public function getGoodsdetailbyId($id){
-        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,cm.merchant_name,cga.path,cga.name FROM `goods` cg
+        $sql = "SELECT cg.sysno,cg.goodsname,cg.price,cm.sysno merchant_sysno,cm.merchant_name,cga.path,cga.name FROM `goods` cg
                 LEFT JOIN user_merchant cm ON cm.merchant_no = cg.merchant_no
                 LEFT JOIN goods_attach cga ON cga.goods_sysno = cg.sysno
                 WHERE cg.sysno = $id";

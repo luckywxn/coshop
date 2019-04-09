@@ -13,7 +13,7 @@
             </span>
             <span><a href="/orders/list" rel="nofollow">我的订单</a></span>
             <span><a href="/shoppingtrolley/list" rel="nofollow">购物车</a></span>
-            <span><a href="#" rel="nofollow">收藏夹</a></span>
+            <span><a href="/favorite/favoriteGoodsList" rel="nofollow">收藏夹</a></span>
             <span><a href="#" rel="nofollow">帮助中心</a></span>
         </div>
     </div>

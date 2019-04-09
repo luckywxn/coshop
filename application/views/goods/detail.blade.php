@@ -2,13 +2,13 @@
 <title>CoShop</title>
 <link rel="stylesheet" href="/static/css/lib/iconfont/iconfont.css">
 <link rel="stylesheet" href="/static/css/common.css">
+<link rel="stylesheet" href="/static/css/goods.css">
 <link rel="stylesheet" href="/static/css/index.css">
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/index.js"></script>
 <body>
 
 @include('index.header')
-
 
 <!--内容区-->
 <div class="container-bg">
@@ -22,10 +22,15 @@
                 <div class="w100r">
                     <div class="recommend-bor">
                         <img src="{{$path}}/{{$name}}">
+                        <p class="tm-action">
+                            <a class="favorite" onclick="favoritegood()"><i class="icon-pingjia"></i><span>收藏商品</span></a>
+                            <a class="favShop" onclick="favoriteMerchant()"><span>收藏店铺</span></a>
+                        </p>
                     </div>
 
                     <div style="margin: 20px 100px;float: left" >
                         <input type="hidden" id="goods_sysno" value="{{$sysno}}">
+                        <input type="hidden" id="merchant_sysno" value="{{$merchant_sysno}}">
                         <p style="font-size: 20px">{{$goodsname}}</p>
                         <br>
                         <p style="font-size: 16px;color: red">￥{{$price}}</p>
@@ -50,16 +55,17 @@
 </body>
 </html>
 <script>
+    //购物车数量增加
     function addnum(){
         $("#detailgood").val(parseInt($("#detailgood").val())+1);
     }
-
+    //购物车数量减少
     function subnum(){
         if(parseInt($("#detailgood").val())>1) {
             $("#detailgood").val(parseInt($("#detailgood").val()) - 1);
         }
     }
-
+    //添加商品到购物车
     function addtrolley(){
         var member_no =  $("#member_no").val();
         if(!member_no){
@@ -75,8 +81,47 @@
             dataType: "json",
             success: function(option){
                 alert(option.mes)
-//                console.log(option.mes);
             }
         })
     }
+    //收藏商品
+    function favoritegood() {
+        var member_no =  $("#member_no").val();
+        if(!member_no){
+            alert("请先登录");
+            return false;
+        }
+        var collect_type = 1;
+        var collect_sysno = $("#goods_sysno").val();
+        $.ajax({
+            type:"POST",
+            url: "/favorite/addfavorite",
+            data: {member_no:member_no,collect_type:collect_type,collect_sysno:collect_sysno},
+            dataType: "json",
+            success: function(option){
+                alert(option.mes)
+            }
+        })
+    }
+    //收藏店铺
+    function favoriteMerchant() {
+        var member_no =  $("#member_no").val();
+        if(!member_no){
+            alert("请先登录");
+            return false;
+        }
+        var collect_type = 2;
+        var collect_sysno = $("#merchant_sysno").val();
+        $.ajax({
+            type:"POST",
+            url: "/favorite/addfavorite",
+            data: {member_no:member_no,collect_type:collect_type,collect_sysno:collect_sysno},
+            dataType: "json",
+            success: function(option){
+                alert(option.mes)
+            }
+        })
+    }
+
+
 </script>
